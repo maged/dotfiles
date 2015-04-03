@@ -5,6 +5,7 @@ set shiftwidth=4
 set expandtab
 set shiftround
 set number relativenumber
+set nu
 
 " no beeps!
 set vb
