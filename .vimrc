@@ -47,9 +47,15 @@ set hlsearch
 nnoremap <leader>h :nohls<CR>
 nohls
 
+" Smart cases for searching
+set ignorecase
+set smartcase
+
 " insert mode mappings
 inoremap jk <esc>
+vnoremap jk <esc>
 inoremap <esc> <nop>
 
 " change filetypes for ambiguous files
 au BufNewFile,BufRead nginx.conf* setfiletype nginx
+
