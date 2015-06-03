@@ -14,6 +14,12 @@ set t_vb=
 let mapleader = "\\"
 let maplocalleader = "\\"
 
+" change filetypes for ambiguous files
+au BufNewFile,BufRead nginx.conf* setfiletype nginx
+
+" Better tab completion
+set wildmode=longest,list,full
+
 " Mappings
 
 " hard mode
@@ -52,10 +58,6 @@ set ignorecase
 set smartcase
 
 " insert mode mappings
-inoremap jk <esc>
+inoremap jk <esc>l
 vnoremap jk <esc>
 inoremap <esc> <nop>
-
-" change filetypes for ambiguous files
-au BufNewFile,BufRead nginx.conf* setfiletype nginx
-
