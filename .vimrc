@@ -61,3 +61,9 @@ set smartcase
 inoremap jk <esc>l
 vnoremap jk <esc>
 inoremap <esc> <nop>
+
+" so I can check this leader shit
+nnoremap <leader><leader> :echo("\<leader\> works! It is set to \<leader> ")<CR>
+
+" fast writes
+nnoremap <leader>w :w<cr>
