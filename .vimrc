@@ -38,7 +38,7 @@ nnoremap <leader>_ :m -2<ENTER>
 
 " u to uppercase word
 nnoremap <leader>u maviWU`a
-inoremap <c-u> maviWU`aa
+inoremap <c-u> <esc>maviWU`aa
 
 " surround with quotes
 vnoremap <leader>" <esc>ma`<i"<esc>`>la"<esc>`<v`>ll
