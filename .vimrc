@@ -1,4 +1,4 @@
-:color desert
+color desert
 set smartindent
 set tabstop=4
 set shiftwidth=4
@@ -10,6 +10,9 @@ set nu
 " no beeps!
 set vb
 set t_vb=
+
+" run pathogen (for package management)
+execute pathogen#infect()
                   
 let mapleader = "\\"
 let maplocalleader = "\\"
