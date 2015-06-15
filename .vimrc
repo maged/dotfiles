@@ -1,4 +1,6 @@
 color desert
+hi LineNr ctermfg=Yellow
+hi CursorLineNr ctermfg=White
 set smartindent
 set tabstop=4
 set shiftwidth=4
@@ -9,11 +11,19 @@ set nu
 
 " no beeps!
 set vb
-set t_vb=
+set t_vb= 
 
+" For Plugins:
 " run pathogen (for package management)
-execute pathogen#infect()
-                  
+call pathogen#infect()
+call pathogen#helptags()
+" for airline
+set laststatus=2 
+" for nerdtree
+:autocmd VimEnter * if &filetype !=# 'gitcommit' | NERDTree | endif " Open on startup
+nnoremap <leader>n :NERDTree %<CR>
+nnoremap <leader>f :NERDTreeFind<CR>
+
 let mapleader = "\\"
 let maplocalleader = "\\"
 
@@ -24,24 +34,25 @@ au BufNewFile,BufRead nginx.conf* setfiletype nginx
 set wildmode=longest,list,full
 
 " Mappings
+nnoremap Y y$
 
 " hard mode
-noremap <up> <nop>
-noremap <down> <nop>
-noremap <left> <nop>
-noremap <right> <nop>
+" noremap <up> <nop>
+" noremap <down> <nop>
+" noremap <left> <nop>
+" noremap <right> <nop>
 
 " Quickly edit/reload vim
-nnoremap <leader>ev :split $MYVIMRC<cr>
-nnoremap <leader>sv :source $MYVIMRC<cr>
+nnoremap <leader>ev :split $MYVIMRC<CR>
+nnoremap <leader>sv :source $MYVIMRC<CR>
 
 " move lines up/down
-nnoremap <leader>- ddp
-nnoremap <leader>_ :m -2<ENTER>
+nnoremap - ddp
+nnoremap _ :m -2<ENTER>
 
 " u to uppercase word
 nnoremap <leader>u maviWU`a
-inoremap <c-u> <esc>maviWU`aa
+inoremap <C-U> <esc>maviWU`aa
 
 " surround with quotes
 vnoremap <leader>" <esc>ma`<i"<esc>`>la"<esc>`<v`>ll
