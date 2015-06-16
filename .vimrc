@@ -13,6 +13,9 @@ set nu
 set vb
 set t_vb= 
 
+" statusline: filename:%read ... curr character
+set statusline=%t:\ %p%%%=%k\ \ %c
+
 " For Plugins:
 " run pathogen (for package management)
 call pathogen#infect()
