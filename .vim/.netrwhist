@@ -1,8 +1,3 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
-let g:netrw_dirhist_1='/home/azureuser'
-let g:netrw_dirhist_2='/home'
-let g:netrw_dirhist_3='/'
-let g:netrw_dirhist_4='/home/azureuser/environments'
-let g:netrw_dirhist_5='/home/azureuser/environments/tutorial'
-let g:netrw_dirhist_6='/home/azureuser/environments/tutorial/myapp'
+let g:netrw_dirhist_cnt =1
+let g:netrw_dirhist_1='/home/ods/.virtualenvs/ods/src/platform/ods'
