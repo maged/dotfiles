@@ -114,3 +114,5 @@ if ! shopt -oq posix; then
 fi
 
 set bell-style none
+export VISUAL=vim
+export EDITOR="$VISUAL"
