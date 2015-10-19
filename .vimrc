@@ -1,3 +1,5 @@
+filetype plugin indent on
+syntax on
 " For Plugins:
     " run pathogen (for package management)
     call pathogen#infect()
@@ -13,8 +15,8 @@
     set shiftround
     set number relativenumber
     set nu
-    set mouse=a
-    set ttymouse=xterm2
+"    set mouse=a
+"    set ttymouse=xterm2
     " no gui guiness
     if has('gui_running')
         set guioptions=c
@@ -39,7 +41,7 @@
     if has('gui_running')
         color seoul256
     else
-        color torte
+        color seoul256
     endif
     " grey search highlight
     hi Search term=reverse ctermbg=7
@@ -142,7 +144,7 @@
     " vnoremap jf <esc>
     "inoremap <esc> <nop>
     " so I can check this leader shit
-    nnoremap <leader><leader> :echo("\<leader\> works! It is set to \<leader> ")<CR>
+    nnoremap <leader><leader> :echo("\<leader\> works! It is set to \"\<leader>\" ")<CR>
 
     " fast writes
     nnoremap <leader>w :w<cr>
