@@ -41,7 +41,7 @@ syntax on
     if has('gui_running')
         color seoul256
     else
-        color seoul256
+        color torte
     endif
     " grey search highlight
     hi Search term=reverse ctermbg=7
@@ -68,6 +68,8 @@ syntax on
     hi StatusLine ctermfg=8 ctermbg=7
     hi StatusLineNC ctermfg=8 ctermbg=7
 
+" filetype specific
+    autocmd FileType python setlocal shiftwidth=2 tabstop=2
 " MatchTag
     let g:mta_set_default_matchtag_color = 0
     let g:mta_use_matchparen_group = 0

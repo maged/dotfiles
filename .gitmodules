@@ -1,3 +1,12 @@
 [submodule ".vim/bundle/nerdtree"]
 	path = .vim/bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree
+[submodule ".vim/bundle/vim-git-branch-info"]
+	path = .vim/bundle/vim-git-branch-info
+	url = https://github.com/taq/vim-git-branch-info
+[submodule ".vim/bundle/MatchTagAlways"]
+	path = .vim/bundle/MatchTagAlways
+	url = https://github.com/Valloric/MatchTagAlways
+[submodule ".vim/bundle/vim-gitbranch"]
+	path = .vim/bundle/vim-gitbranch
+	url = https://github.com/itchyny/vim-gitbranch
