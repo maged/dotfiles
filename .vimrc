@@ -5,7 +5,9 @@ syntax on
     call pathogen#infect()
     call pathogen#helptags()
 
-" tags file
+" tags
+    " Look through parent folders for tags
+    set tags=tags;
 
 " some reasonable defaults
     set smartindent
@@ -35,6 +37,10 @@ syntax on
 
     " matchit html tags
     runtime macros/matchit.vim
+
+    " use system clipboard by default
+    set clipboard=unnamedplus
+
 
 " decent colors
     set background=dark
@@ -69,7 +75,7 @@ syntax on
     hi StatusLineNC ctermfg=8 ctermbg=7
 
 " filetype specific
-    autocmd FileType python setlocal shiftwidth=2 tabstop=2
+"    autocmd FileType python setlocal shiftwidth=2 tabstop=2
 " MatchTag
     let g:mta_set_default_matchtag_color = 0
     let g:mta_use_matchparen_group = 0
