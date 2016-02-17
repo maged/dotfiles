@@ -63,6 +63,8 @@ syntax on
     " Not invisible brackets
     hi MatchParen cterm=none ctermbg=blue ctermfg=white
 
+" nicer font
+
 " statusline
     " statusline: filename:%read ... curr character
     " statusline color groups:
@@ -75,7 +77,7 @@ syntax on
     hi StatusLineNC ctermfg=8 ctermbg=7
 
 " filetype specific
-"    autocmd FileType python setlocal shiftwidth=2 tabstop=2
+    au FileType python setl shiftwidth=4 tabstop=4
 " MatchTag
     let g:mta_set_default_matchtag_color = 0
     let g:mta_use_matchparen_group = 0
@@ -84,7 +86,6 @@ syntax on
 
 " nerdtree
     let NERDTreeIgnore=['\.pyc$']
-    autocmd VimEnter * if @% == "" | NERDTree | endif " Open on startup
     " open curfile nerdtree, and make panes equal
     nnoremap <leader>n :NERDTree %<CR><C-w>=
     nnoremap <leader>f :NERDTreeFind<CR>
@@ -97,6 +98,10 @@ syntax on
 " filetypes
     " nginx conf is ambigous
     au BufNewFile,BufRead nginx.conf* setfiletype nginx
+
+" vim-notes
+    let g:notes_directories = ['~/Documents/Notes']
+    let g:notes_suffix = '.txt'
 
 " Mappings
     nnoremap Y y$
@@ -203,6 +208,9 @@ syntax on
     vnoremap J mt:call search('^'. matchstr(getline('.'), '\(^\s*\)') .'\%>' . line('.') . 'l\S', 'e')<CR>my`tv`y
     let g:SeekKey = '<Space>'
     " nnoremap <space> jk
+
+    " Quick substition/refactor
+    nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
 " autocmd InsertLeave * s/\s\+$//e
 
 " Functions

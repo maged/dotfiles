@@ -79,7 +79,6 @@ if [ -x /usr/bin/dircolors ]; then
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
     LS_COLORS="di=33" 
-    alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
 fi
@@ -116,3 +115,7 @@ fi
 set bell-style none
 export VISUAL=vim
 export EDITOR="$VISUAL"
+
+# added by Anaconda2 2.4.1 installer
+export PATH="/home/maged/anaconda2/bin:$PATH"
+export PYTHONPATH="/home/maged/anaconda2/bin"
