@@ -100,7 +100,7 @@ syntax on
     au BufNewFile,BufRead nginx.conf* setfiletype nginx
 
 " vim-notes
-    let g:notes_directories = ['~/Documents/Notes']
+    let g:notes_directories = ['~/Notes']
     let g:notes_suffix = '.txt'
 
 " Mappings
