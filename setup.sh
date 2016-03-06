@@ -1,8 +1,8 @@
 echo "Creating dotfile links on ~/"
 
-files=".bashrc .vimrc"
+files=".bashrc .vimrc tmux.conf .gitignore .gitmodules .inputrc"
 
-dirs=".vim"
+dirs=".vim .git"
 
 for file in $files; do
 	ln ~/dotfiles/$file ~/$file
