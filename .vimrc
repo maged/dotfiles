@@ -151,7 +151,10 @@ syntax on
     set smartcase
 
     " insert mode mappings
+    " Just smash j + k to escape
     inoremap jk <esc>l
+    inoremap kj <esc>l
+
     vnoremap ajk <esc>
     " inoremap jf <esc>l
     " vnoremap jf <esc>
