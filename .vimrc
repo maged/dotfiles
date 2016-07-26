@@ -4,6 +4,9 @@ syntax on
     " run pathogen (for package management)
     call pathogen#infect()
     call pathogen#helptags()
+    " Use to debug plugins
+    " let g:pathogen_disabled = []
+
 
 " tags
     " Look through parent folders for tags
