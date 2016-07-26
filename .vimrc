@@ -105,6 +105,7 @@ syntax on
 " vim-notes
     let g:notes_directories = ['~/Notes']
     let g:notes_suffix = '.txt'
+    au BufNewFile,BufRead *.txt setfiletype notes
 
 " Mappings
     nnoremap Y y$
@@ -249,3 +250,11 @@ endfunction
 
 "Bind the BufSel() function to a user-command
 command! -nargs=1 B :call BufSel("<args>")
+
+" Little alert for > 80 chars in column
+function! HighlightTooLongLines()
+  highlight def link RightMargin Error
+endfunction
+augroup filetypedetect
+  au BufNewFile,BufRead * call HighlightTooLongLines()
+augroup END
