@@ -16,7 +16,7 @@ echo "Creating dotfile links on ~/"
 files=".bashrc .vimrc .gitignore .inputrc"
 extras="tmux.conf"
 
-dirs=".vim .git"
+dirs=".vim"
 
 for file in $files; do
   install_file $file
@@ -38,5 +38,7 @@ for dir in $dirs; do
        ln -s ~/dotfiles/$dir ~/$dir
       fi
 done
+
+git config --global core.excludesfiles ~/.gitignore
 
 echo "...done"
