@@ -22,3 +22,6 @@
 [submodule ".vim/bundle/seoul256.vim"]
 	path = .vim/bundle/seoul256.vim
 	url = https://github.com/junegunn/seoul256.vim
+[submodule ".vim/bundle/Dart"]
+	path = .vim/bundle/Dart
+	url = https://github.com/vim-scripts/Dart
