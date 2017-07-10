@@ -14,8 +14,8 @@ syntax on
 
 " some reasonable defaults
     set smartindent
-    set tabstop=4
-    set shiftwidth=4
+    set tabstop=2
+    set shiftwidth=2
     set expandtab
     set shiftround
     set number relativenumber
@@ -80,7 +80,7 @@ syntax on
     hi StatusLineNC ctermfg=8 ctermbg=7
 
 " filetype specific
-    au FileType python setl shiftwidth=4 tabstop=4
+"    au FileType python setl shiftwidth=4 tabstop=4
 " MatchTag
     let g:mta_set_default_matchtag_color = 0
     let g:mta_use_matchparen_group = 0
@@ -258,3 +258,6 @@ endfunction
 augroup filetypedetect
   au BufNewFile,BufRead * call HighlightTooLongLines()
 augroup END
+
+" cd to current file
+nnoremap <leader>cd :cd %:h<cr>
