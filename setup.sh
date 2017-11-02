@@ -13,7 +13,7 @@ install_file() {
 
 echo "Creating dotfile links on ~/"
 
-files=".bashrc .vimrc .gitignore .inputrc"
+files=".bashrc .vimrc .gitignore .inputrc .gvimrc"
 extras="tmux.conf"
 
 dirs=".vim"
