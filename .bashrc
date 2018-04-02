@@ -119,7 +119,7 @@ export EDITOR="$VISUAL"
 # Custom git commands.
 git() {
   if [[ $@ == "branch-sorted" ]]; then
-    command git for-each-ref --sort=committerdate refs/heads/ --format='%(color: red)%(committerdate:short) %(color: cyan)%(refname:short)'
+    command git for-each-ref --sort=-committerdate refs/heads/ --format='%(color: red)%(committerdate:short) %(color: cyan)%(refname:short)'
   else
     command git "$@"
   fi
