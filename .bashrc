@@ -119,7 +119,7 @@ export EDITOR="$VISUAL"
 # Custom git commands.
 git() {
   if [[ $@ == "branch-sorted" ]]; then
-    command git for-each-ref --sort=-committerdate refs/heads/ --format='%(color: red)%(committerdate:short) %(color: cyan)%(refname:short)'
+    command git for-each-ref --sort=-committerdate refs/heads/ --format='%(color: red)%(committerdate:short) %(color: cyan)%(refname:short)' --color=always | less -r
   elif [[ $@ == "stash-list" ]]; then
     command git stash list --pretty=format:'%Cred%ar %Cblue%<(10)%gd %C(white)%s'
   else
