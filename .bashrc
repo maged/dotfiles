@@ -122,7 +122,22 @@ git() {
     command git for-each-ref --sort=-committerdate refs/heads/ --format='%(color: red)%(committerdate:short) %(color: cyan)%(refname:short)' --color=always | less -r
   elif [[ $@ == "stash-list" ]]; then
     command git stash list --pretty=format:'%Cred%ar %Cblue%<(10)%gd %C(white)%s'
+  elif [[ $@ == "add" ]]; then
+    LAST_COMMAND=$(history | tail -n2 | head -n1)
+    WORD_1=$(echo $LAST_COMMAND | awk '{print $2}')
+    WORD_2=$(echo $LAST_COMMAND | awk '{print $3}')
+    WORD_3=$(echo $LAST_COMMAND | awk '{print $4}')
+    if [[ $WORD_1 == "git" && $WORD_2 == "diff" ]]; then
+      command git add $WORD_3
+    elif [[ $WORD_1 == "gd" ]]; then
+      command git add $WORD_2
+    fi
   else
     command git "$@"
   fi
 }
+
+alias gd='git diff'
+alias ga='git add'
+alias gs='git status'
+alias gp='git pull'
