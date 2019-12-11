@@ -84,9 +84,9 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # some more ls aliases
+alias l='ls -lh'
 alias ll='ls -alF'
 alias la='ls -A'
-alias l='ls -CF'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -140,4 +140,30 @@ git() {
 alias gd='git diff'
 alias ga='git add'
 alias gs='git status'
-alias gp='git pull'
+alias gp='git push'
+alias gu='git pull'
+alias gl='git log --graph --pretty='\''%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'\'
+alias gds='git diff --staged'
+alias gg='git grep -pnI --break'
+alias ggi='git grep -ipnI --break'
+alias gpt='git push --tags'
+alias gu='git pull --rebase'
+alias gs='git status'
+alias gh='git stash'
+alias ghp='git stash pop'
+alias gcm='git commit -m'
+alias gk='git checkout'
+alias gr='git rebase'
+alias gri='git rebase --interactive'
+alias grc='git rebase --continue'
+alias gts='git tag -l'
+alias gta='git tag -a'
+
+
+function ggsed() {
+  PREV=$1;
+  NEW=$2;
+  echo "New: $NEW; Prev: $PREV"
+  git grep "$PREV" | wc -l;
+  git grep -l "$PREV" | xargs sed -i "s/$PREV/$NEW/g";
+}

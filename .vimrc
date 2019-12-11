@@ -90,10 +90,15 @@ syntax on
 " nerdtree
     let NERDTreeIgnore=['\.pyc$']
     " open curfile nerdtree, and make panes equal
-    nnoremap <leader>n :NERDTree %<CR><C-w>=
+    nnoremap <leader>n :NERDTree %<CR>
     nnoremap <leader>f :NERDTreeFind<CR>
     " git branch as nerdtree statusline
     autocmd FileType nerdtree setlocal statusline=\%.35{gitbranch#name()}\
+    let g:NERDTreeMapHelp='<F1>'
+    " Go to current nerdtree pane
+    nnoremap <leader>n :NERDTreeFocus<CR>
+    " Open nerdtree pane at current file
+    nnoremap <leader>N :NERDTree %<CR>
 
 " fzf: fuzzy finder
     set rtp+=~/.fzf
@@ -218,6 +223,13 @@ syntax on
 
     " Quick substition/refactor
     nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
+
+    " kim stuff
+    inoremap <C-c> <Esc>
+    vnoremap <C-c> <Esc>
+    nnoremap ; :
+    nnoremap : ;
+
 " autocmd InsertLeave * s/\s\+$//e
 
 " Functions
@@ -261,3 +273,11 @@ augroup END
 
 " cd to current file
 nnoremap <leader>cd :cd %:h<cr>
+
+" Syntax mapping
+autocmd BufEnter *.tsx :setlocal filetype=typescript
+autocmd BufEnter *.ts :setlocal filetype=typescript
+
+" Applied specific
+au FileType cc set ts=2 sw=2
+au FileType h set ts=2 sw=2
