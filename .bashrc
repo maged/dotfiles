@@ -167,3 +167,13 @@ function ggsed() {
   git grep "$PREV" | wc -l;
   git grep -l "$PREV" | xargs sed -i "s/$PREV/$NEW/g";
 }
+
+function ssh-pf() {
+  CMD="ssh $1"
+  shift
+  for port in $@; do
+    CMD="$CMD -L $port:localhost:$port "
+  done
+  echo "$CMD"
+  eval "$CMD"
+}
