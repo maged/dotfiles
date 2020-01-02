@@ -13,21 +13,12 @@ install_file() {
 
 echo "Creating dotfile links on ~/"
 
-files=".bashrc .vimrc .gitignore .inputrc .gvimrc"
-extras="tmux.conf"
+files=".bashrc .vimrc .gitignore .inputrc .gvimrc .tmux.conf"
 
 dirs=".vim"
 
 for file in $files; do
   install_file $file
-done
-
-for file in $extras; do
-  read -p "Want to install $file? (y/n)" answer
-  if [[ $answer == "y" || $answer == "Y" ]]
-    then
-    intall_file $file
-  fi
 done
 
 for dir in $dirs; do
