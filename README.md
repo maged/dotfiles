@@ -6,4 +6,4 @@ Needs [vim 7.4](http://www.linuxfromscratch.org/blfs/view/7.7/postlfs/vim.html) 
 
 One liner:
 
-    git clone --recursive https://github.com/okaymaged/dotfiles && ./dotfiles/setup.sh && source ./bashrc
+    git clone --recursive https://github.com/maged/dotfiles && ./dotfiles/setup.sh && source ./bashrc
