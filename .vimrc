@@ -89,9 +89,6 @@ syntax on
 
 " nerdtree
     let NERDTreeIgnore=['\.pyc$']
-    " open curfile nerdtree, and make panes equal
-    nnoremap <leader>n :NERDTree %<CR>
-    nnoremap <leader>f :NERDTreeFind<CR>
     " git branch as nerdtree statusline
     autocmd FileType nerdtree setlocal statusline=\%.35{gitbranch#name()}\
     let g:NERDTreeMapHelp='<F1>'
@@ -99,9 +96,6 @@ syntax on
     nnoremap <leader>n :NERDTreeFocus<CR>
     " Open nerdtree pane at current file
     nnoremap <leader>N :NERDTree %<CR>
-
-" fzf: fuzzy finder
-    set rtp+=~/.fzf
 
 " filetypes
     " nginx conf is ambigous
@@ -225,8 +219,7 @@ syntax on
     nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
 
     " kim stuff
-    inoremap <C-c> <Esc>
-    vnoremap <C-c> <Esc>
+    noremap <C-c> <Esc>
     nnoremap ; :
     nnoremap : ;
 
@@ -277,6 +270,11 @@ nnoremap <leader>cd :cd %:h<cr>
 " Syntax mapping
 autocmd BufEnter *.tsx :setlocal filetype=typescript
 autocmd BufEnter *.ts :setlocal filetype=typescript
+
+" fzf fuzzy finder
+nnoremap <leader>f :GFiles<CR>
+nnoremap <leader>r :Rg<CR>
+
 
 " Applied specific
 au FileType cc set ts=2 sw=2
