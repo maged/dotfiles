@@ -43,3 +43,15 @@
 [submodule ".vim/bundle/fzf.vim"]
 	path = .vim/bundle/fzf.vim
 	url = https://github.com/junegunn/fzf.vim
+[submodule ".vim/bundle/vim-jsx-typescript"]
+	path = .vim/bundle/vim-jsx-typescript
+	url = https://github.com/peitalin/vim-jsx-typescript
+[submodule ".vim/pack/vim-javascript"]
+	path = .vim/pack/vim-javascript
+	url = https://github.com/pangloss/vim-javascript.git
+[submodule ".vim/pack/vim-color-spring-night"]
+	path = .vim/pack/vim-color-spring-night
+	url = https://github.com/rhysd/vim-color-spring-night
+[submodule ".vim/bundle/vim-color-spring-night"]
+	path = .vim/bundle/vim-color-spring-night
+	url = https://github.com/rhysd/vim-color-spring-night

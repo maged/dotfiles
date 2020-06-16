@@ -50,7 +50,9 @@ syntax on
     if has('gui_running')
         color seoul256
     else
-        color torte
+        color seoul256
+        " Change to torte if the terminal does not support 256 colors well.
+        " color torte
     endif
     " grey search highlight
     hi Search term=reverse ctermbg=7
@@ -75,9 +77,13 @@ syntax on
     hi User1 ctermbg=white ctermfg=darkblue guifg=darkblue guibg=#e3e3e3
     hi User2 ctermbg=white ctermfg=black guifg=black guibg=#e3e3e3
     hi User3 ctermbg=white ctermfg=darkred guifg=darkred guibg=#e3e3e3
+    " (user 2) filename: (user 1) % file ---- column number (user 3) [+ if unmodified]
     set statusline=%2*%t:%1*\ %p%%\ %=%1*%k\ \ %1*%c%3*%m
-    hi StatusLine ctermfg=8 ctermbg=7
-    hi StatusLineNC ctermfg=8 ctermbg=7
+    hi StatusLine ctermfg=white ctermbg=white
+    hi StatusLineNC ctermfg=lightgray ctermbg=lightgray
+    " TODO(maged): Not sure how these are working.
+    hi StatusLineTerm ctermfg=255 ctermbg=255
+    hi StatusLineTermNC ctermfg=white ctermbg=white
 
 " filetype specific
 "    au FileType python setl shiftwidth=4 tabstop=4
@@ -268,8 +274,11 @@ augroup END
 nnoremap <leader>cd :cd %:h<cr>
 
 " Syntax mapping
-autocmd BufEnter *.tsx :setlocal filetype=typescript
+" Having issues with Typescript. incorrectly highlighting imports.
+" autocmd BufEnter *.tsx :setlocal filetype=typescript
+autocmd BufEnter  *.tsx :setlocal filetype=javascript
 autocmd BufEnter *.ts :setlocal filetype=typescript
+
 
 " fzf fuzzy finder
 nnoremap <leader>f :GFiles<CR>
