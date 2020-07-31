@@ -55,3 +55,6 @@
 [submodule ".vim/bundle/vim-color-spring-night"]
 	path = .vim/bundle/vim-color-spring-night
 	url = https://github.com/rhysd/vim-color-spring-night
+[submodule ".vim/pack/ale"]
+	path = .vim/pack/ale
+	url = https://github.com/dense-analysis/ale
