@@ -47,7 +47,7 @@ zstyle ':vcs_info:*' enable git
 precmd_vcs_info() {
   log_debug 'Running vcs_info'
   vcs_info
-  BASE_PROMPT="${vcs_info_msg_0_}"
+  BASE_PROMPT="${vcs_info_msg_0_} %F{235}%*%f"
 }
 
 zstyle ':vcs_info:git:*' check-for-changes true
@@ -57,9 +57,9 @@ zstyle ':vcs_info:git:*' unstagedstr '%F{red}●%f'
 BRANCH_STYLE="%F{022}%b"
 
 zstyle ':vcs_info:git:*' branch_style '%F{015}%K{252}%b%k'
-zstyle ':vcs_info:git:*' formats "%u %c ${BRANCH_STYLE}" "%F{022}(%b)%f"
+zstyle ':vcs_info:git:*' formats "%u %c" "%F{022}(%b)%f"
 # todo: use constants for colors
-zstyle ':vcs_info:git:*' actionformats '%u %c ${BRANCH_STYLE}  %F{7}[%F{1}%a%F{5}%F{7}]%f' "%F{022}(%b)%f"
+zstyle ':vcs_info:git:*' actionformats '%u %c  %F{7}[%F{1}%a%F{5}%F{7}]%f' "%F{022}(%b)%f"
 
 precmd_functions+=( precmd_vcs_info )
 
