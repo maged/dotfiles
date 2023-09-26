@@ -54,12 +54,12 @@ zstyle ':vcs_info:git:*' check-for-changes true
 zstyle ':vcs_info:git:*' stagedstr '%F{2}●%f'
 zstyle ':vcs_info:git:*' unstagedstr '%F{red}●%f'
 
-BRANCH_STYLE="%F{232}%K{007}%b%k"
+BRANCH_STYLE="%F{022}%b"
 
 zstyle ':vcs_info:git:*' branch_style '%F{015}%K{252}%b%k'
-zstyle ':vcs_info:git:*' formats "%u %c ${BRANCH_STYLE}"
+zstyle ':vcs_info:git:*' formats "%u %c ${BRANCH_STYLE}" "%F{022}(%b)%f"
 # todo: use constants for colors
-zstyle ':vcs_info:git:*' actionformats '%u %c ${BRANCH_STYLE}  %F{7}[%F{1}%a%F{5}%F{7}]%f'
+zstyle ':vcs_info:git:*' actionformats '%u %c ${BRANCH_STYLE}  %F{7}[%F{1}%a%F{5}%F{7}]%f' "%F{022}(%b)%f"
 
 precmd_functions+=( precmd_vcs_info )
 
@@ -79,12 +79,12 @@ zle -N zle-line-init
 # Expand the prompt
 setopt prompt_subst
 
-PS1='%F{033}%~%f %F{028}$%f '
+PS1='%F{033}%~%f ${vcs_info_msg_1_} %f%F{028}$%f '
 
 # Notification settings (added through auto-notify plugin)
 export AUTO_NOTIFY_TITLE="Done: %command"
 export AUTO_NOTIFY_BODY="Command completed in %elapsed seconds with exit code %exit_code"
-export AUTO_NOTIFY_IGNORE+=("python" "git" "docker")
+# export AUTO_NOTIFY_IGNORE+=("python" "git" "docker")
 # No bell
 unsetopt beep
 
