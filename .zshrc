@@ -84,7 +84,7 @@ PS1='%F{033}%~%f ${vcs_info_msg_1_} %f%F{028}$%f '
 # Notification settings (added through auto-notify plugin)
 export AUTO_NOTIFY_TITLE="Done: %command"
 export AUTO_NOTIFY_BODY="Command completed in %elapsed seconds with exit code %exit_code"
-# export AUTO_NOTIFY_IGNORE+=("python" "git" "docker")
+AUTO_NOTIFY_IGNORE+=("python" "docker")
 # No bell
 unsetopt beep
 
