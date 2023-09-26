@@ -1,3 +1,10 @@
+#!/usr/bin/env bash
+
+DIR=$HOME/dotfiles
+pushd $DIR
+
+echo "Initializing submodules"
+git submodule update --init
 
 # Copies to ~ if file doesnt exist, sources otherwise
 install_file() {

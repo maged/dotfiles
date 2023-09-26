@@ -58,3 +58,9 @@
 [submodule ".vim/pack/ale"]
 	path = .vim/pack/ale
 	url = https://github.com/dense-analysis/ale
+[submodule "zsh/zsh-auto-notify"]
+	path = zsh/zsh-auto-notify
+	url = https://github.com/MichaelAquilina/zsh-auto-notify
+[submodule "zsh/zsh-autocomplete"]
+	path = zsh/zsh-autocomplete
+	url = https://github.com/marlonrichert/zsh-autocomplete.git
