@@ -1,4 +1,0 @@
-git
-vim
-vim-gtk
-
