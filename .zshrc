@@ -29,10 +29,11 @@ bindkey '\e[B' history-search-forward
 # Go to menu first
 bindkey '\t' menu-select "$terminfo[kcbt]" menu-select
 bindkey -M menuselect '\t' menu-complete "$terminfo[kcbt]" reverse-menu-complete
+# Limit number of lines shown by default
 zstyle -e ':autocomplete:*:*' list-lines '5'
 zstyle ':autocomplete:*:*' list-lines '5'
-
-# Limit number of lines shown by default
+# Wait before displaying menu
+zstyle ':autocomplete:*' delay 0.2
 
 # Set default editor
 export VISUAL=vim
@@ -98,7 +99,8 @@ alias egrep='egrep --color=auto'
 alias ll='ls -alF'
 alias la='ls -A'
 
-# git aliases
+# git changes
+# git custom subcommands
 git() {
   # custom git method to define new sub-commands
   if [[ $@ == "branch-sorted" ]]; then
@@ -114,6 +116,7 @@ git() {
     WORD_1=$(echo $LAST_COMMAND | awk '{print $2}')
     WORD_2=$(echo $LAST_COMMAND | awk '{print $3}')
     WORD_3=$(echo $LAST_COMMAND | awk '{print $4}')
+    echo "$WORD1 $WORD2 $WORD3"
     if [[ $WORD_1 == "git" && $WORD_2 == "diff" ]]; then
       command git add $WORD_3
     elif [[ $WORD_1 == "gd" ]]; then
@@ -124,6 +127,62 @@ git() {
   fi
 }
 
+# Add custom sub-commands to zsh completion
+_customgit () {
+    local -a list
+    list=(
+      branch-sorted:'show list of branches sorted by time used'
+      stash-list:'show list of git stashes with metadata'
+    )
+    if ((CURRENT==2)); then
+      _describe -t custom-commands 'custom sub commands' list
+    fi
+
+    _git # Delegate to completion
+}
+compdef _customgit git
+
+# git aliases
+alias gd='git diff'
+alias ga='git add'
+alias gs='git status'
+alias gp='git push'
+alias gu='git pull'
+alias gl='git log --graph --pretty='\''%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'\'
+alias gds='git diff --staged'
+alias gg='git grep -pnI --break'
+alias ggi='git grep -ipnI --break'
+alias gpt='git push --tags'
+alias gu='git pull --rebase'
+alias gs='git status'
+alias gh='git stash'
+alias ghp='git stash pop'
+alias gcm='git commit -m'
+alias gk='git checkout'
+alias gr='git rebase'
+alias gri='git rebase --interactive'
+alias grc='git rebase --continue'
+alias gts='git tag -l'
+alias gta='git tag -a'
+
 # Python3 aliases
 alias python='python3'
 alias pip='pip3'
+
+function ggsed() {
+  PREV=$1;
+  NEW=$2;
+  echo "New: $NEW; Prev: $PREV"
+  git grep "$PREV" | wc -l;
+  git grep -l "$PREV" | xargs sed -i "s/$PREV/$NEW/g";
+}
+
+function ssh-pf() {
+  CMD="ssh $1"
+  shift
+  for port in $@; do
+    CMD="$CMD -L $port:localhost:$port "
+  done
+  echo "$CMD"
+  eval "$CMD"
+}
