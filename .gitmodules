@@ -64,3 +64,6 @@
 [submodule "zsh/zsh-autocomplete"]
 	path = zsh/zsh-autocomplete
 	url = https://github.com/marlonrichert/zsh-autocomplete.git
+[submodule ".vim/bundle/codeium.vim"]
+	path = .vim/bundle/codeium.vim
+	url = https://github.com/Exafunction/codeium.vim

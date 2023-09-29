@@ -7,7 +7,6 @@ syntax on
     " Use to debug plugins
     " let g:pathogen_disabled = []
 
-
 " tags
     " Look through parent folders for tags
     set tags=tags;
