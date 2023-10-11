@@ -91,10 +91,18 @@ unsetopt beep
 # Alias-es
 
 # Add color support to common commands
-alias ls='ls --color=auto'
-LS_COLORS="di=33"
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
+
+COLORSCHEME=$ZSH_HOME/nordtheme
+# Better ls colors and grouping
+if [[ `uname` == "Darwin" ]]; then
+  eval `gdircolors $COLORSCHEME`
+  alias ls="gls --color=always --group-directories-first"
+else
+  eval `dircolors $COLORSCHEME`
+  alias ls="ls --color=always"
+fi
 
 # ls aliases
 alias ll='ls -alF'
