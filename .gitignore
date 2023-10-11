@@ -1,3 +1,5 @@
+# This is used as a global .gitignore delivered with the dotfiles.
+
 ### Vim ###
 # swap
 [._]*.s[a-w][a-z]
