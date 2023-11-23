@@ -54,7 +54,7 @@ syntax on
         " color torte
     endif
     " grey search highlight
-    hi Search term=reverse ctermbg=7
+    hi Search ctermfg=white ctermbg=darkcyan
     hi LineNr ctermfg=darkgrey guifg=#8c8ca3
     hi CursorLineNr ctermfg=White guifg=White
     hi javaScriptFuncArg ctermfg=lightred
