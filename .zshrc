@@ -94,7 +94,7 @@ unsetopt beep
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
-COLORSCHEME=$ZSH_HOME/nordtheme
+COLORSCHEME=$ZSH_HOME/nordtheme.dircolors
 # Better ls colors and grouping
 if [[ `uname` == "Darwin" ]]; then
   eval `gdircolors $COLORSCHEME`
@@ -113,7 +113,6 @@ alias la='ls -A'
 git() {
   # custom git method to define new sub-commands
   if [[ $@ == "branch-sorted" ]]; then
-    
     # Sorts recently used branches
     command git for-each-ref --sort=-committerdate refs/heads/ --format='%(color: red)%(committerdate:short) %(color: cyan)%(refname:short)' --color=always | less -r
   elif [[ $@ == "stash-list" ]]; then
@@ -131,6 +130,8 @@ git() {
     elif [[ $WORD_1 == "gd" ]]; then
       command git add $WORD_2
     fi
+  elif [[ $@ == "review" ]]; then
+    git_review
   else
     command git "$@"
   fi
@@ -142,6 +143,7 @@ _customgit () {
     list=(
       branch-sorted:'show list of branches sorted by time used'
       stash-list:'show list of git stashes with metadata'
+      review: 'git diff then add per file'
     )
     if ((CURRENT==2)); then
       _describe -t custom-commands 'custom sub commands' list
@@ -164,8 +166,6 @@ alias ggi='git grep -ipnI --break'
 alias gpt='git push --tags'
 alias gu='git pull --rebase'
 alias gs='git status'
-alias gh='git stash'
-alias ghp='git stash pop'
 alias gcm='git commit -m'
 alias gk='git checkout'
 alias gr='git rebase'
@@ -183,7 +183,7 @@ function ggsed() {
   NEW=$2;
   echo "New: $NEW; Prev: $PREV"
   git grep "$PREV" | wc -l;
-  git grep -l "$PREV" | xargs sed -i "s/$PREV/$NEW/g";
+  git grep -l "$PREV" | xargs sed -i -e "s/'${PREV}'/'${NEW}'/g";
 }
 
 function ssh-pf() {
@@ -195,3 +195,65 @@ function ssh-pf() {
   echo "$CMD"
   eval "$CMD"
 }
+
+# PATH changes for homebrew / osX
+# Adding these keg-only packages to /bin. May cause problems...
+export PATH="/opt/homebrew/opt/libpq/bin:/opt/homebrew/opt/ruby/bin:/opt/homebrew/opt/libpq/bin:/opt/homebrew/lib/ruby/gems/3.2.0/bin:$PATH"
+
+# tabtab source for electron-forge package
+# uninstall by removing these lines or running `tabtab uninstall electron-forge`
+[[ -f /Users/maged/code/3p/chatgpt-mac/node_modules/tabtab/.completions/electron-forge.zsh ]] && . /Users/maged/code/3p/chatgpt-mac/node_modules/tabtab/.completions/electron-forge.zsh
+
+
+# Needed so `read` below works. Not sure who sets it
+unset READNULLCMD
+function git_review() {
+  # Get a list of all files that have changed (not yet staged for commit)
+  changed_files=$(git diff --name-only)
+
+  if [ -z "$changed_files" ]; then
+    echo "No changes files checking untracked files."
+  fi
+
+  # Split files into arr
+  arr=(${(f)changed_files})
+
+  # Iterate over each file
+  for file in $arr; do
+      echo "Show changes for: $file"
+      # Show the file diff
+      git diff "$file"
+
+      # Ask the user if they want to add this file to the staging area
+      echo "Add this file to the staging area? (y/n/q)"
+      read answer
+      case $answer in
+          [Yy]* ) git add "$file";;
+          [Qq]* ) echo "Exiting."; return;;
+          * ) echo "Skipping $file";;
+      esac
+  done
+
+  untracked_files=$(git ls-files --others --exclude-standard)
+  arr=(${(f)untracked_files})
+  # Iterate over each file
+  for file in $arr; do
+      echo "Show untracked file: $file"
+      # Show the file diff
+      bat "$file"
+
+      # Ask the user if they want to add this file to the staging area
+      echo "Add this file to the staging area? (y/n/q)"
+      read answer
+      case $answer in
+          [Yy]* ) git add "$file";;
+          [Qq]* ) echo "Exiting."; return;;
+          * ) echo "Skipping $file";;
+      esac
+  done
+
+
+  echo "Finished processing all files."
+}
+
+export convoke=/Users/maged/code/convoke
