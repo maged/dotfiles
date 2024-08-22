@@ -1,0 +1,8 @@
+# list of packages installed with brew
+# todo: install them automatically for a new environment
+coreutils
+jq
+restic
+tmux
+vim
+wireguard-tools
