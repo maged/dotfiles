@@ -15,6 +15,7 @@ setopt APPEND_HISTORY
 HISTSIZE=120000
 SAVEHIST=100000
 setopt INC_APPEND_HISTORY
+# Remove duplicates in history suggestions.
 setopt HIST_FIND_NO_DUPS
 
 # Load autocomplete
@@ -25,6 +26,13 @@ autoload -Uz vcs_info
 bindkey '\e[A' history-search-backward
 bindkey '\e[B' history-search-forward
 
+zshaddhistory() {
+  # Trim trailing whitespace from the command before adding it to the history.
+  HISTIGNORE=$(echo "$1" | sed -e 's/ *$//')
+  [[ "$1" != "$HISTIGNORE" ]] && print -s "$HISTIGNORE" && return 1
+  echo $HISTIGNORE
+}
+
 # zsh-autocomplete options
 # Go to menu first
 bindkey '\t' menu-select "$terminfo[kcbt]" menu-select
@@ -34,6 +42,7 @@ zstyle -e ':autocomplete:*:*' list-lines '5'
 zstyle ':autocomplete:*:*' list-lines '5'
 # Wait before displaying menu
 zstyle ':autocomplete:*' delay 0.2
+
 
 # Set default editor
 export VISUAL=vim

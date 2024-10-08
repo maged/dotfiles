@@ -5,7 +5,7 @@ syntax on
     call pathogen#infect()
     call pathogen#helptags()
     " Use to debug plugins
-    " let g:pathogen_disabled = []
+    let g:pathogen_disabled = ['vim-sleuth']
 
 " tags
     " Look through parent folders for tags
@@ -41,7 +41,7 @@ syntax on
     runtime macros/matchit.vim
 
     " use system clipboard by default
-    set clipboard=unnamedplus
+    set clipboard=unnamed
 
 
 " decent colors
@@ -287,3 +287,8 @@ nnoremap <leader>r :Rg<CR>
 " Applied specific
 au FileType cc set ts=2 sw=2
 au FileType h set ts=2 sw=2
+
+" Codeium
+let g:codeium_filetypes = {
+  \ 'notes': v:false,
+  \ }

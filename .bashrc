@@ -132,6 +132,8 @@ git() {
     elif [[ $WORD_1 == "gd" ]]; then
       command git add $WORD_2
     fi
+  elif [[ $@ == "review" ]]; then
+    git_review()
   else
     command git "$@"
   fi
@@ -177,3 +179,34 @@ function ssh-pf() {
   echo "$CMD"
   eval "$CMD"
 }
+
+function git_review() {
+  # Get a list of all files that have changed (not yet staged for commit)
+  changed_files=$(git diff --name-only)
+  
+  # Check if there are no changed files
+  if [ -z "$changed_files" ]; then
+    echo "No changes detected."
+    exit 0
+  fi
+  
+  # Iterate over each file
+  for file in $changed_files; do
+      echo "Showing changes for: $file"
+      # Show the file diff
+      git diff "$file"
+  
+      # Ask the user if they want to add this file to the staging area
+      read -p "Add this file to the staging area? (y/n/q) " answer
+  
+      case $answer in
+          [Yy] ) git add "$file";;
+          [Qq] ) echo "Exiting."; exit;;
+          * ) echo "Skipping $file";;
+      esac
+  done
+  
+  echo "Finished processing all files."
+}
+
+export convoke=/Users/maged/code/convoke
