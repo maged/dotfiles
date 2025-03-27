@@ -5,7 +5,7 @@ syntax on
     call pathogen#infect()
     call pathogen#helptags()
     " Use to debug plugins
-    let g:pathogen_disabled = ['vim-sleuth']
+    let g:pathogen_disabled = ['codeium', 'vim-sleuth', 'ale']
 
 " tags
     " Look through parent folders for tags
@@ -292,3 +292,14 @@ au FileType h set ts=2 sw=2
 let g:codeium_filetypes = {
   \ 'notes': v:false,
   \ }
+
+" ALE
+let g:ale_virtualtext_cursor = 'disabled'
+" TOOD(maged): This should choose right compiler based on file language.
+nnoremap <leader>l :ALEFix eslint<cr>
+
+" Augment (code completion)
+let g:augment_workspace_folders = ['/Users/maged/convoke']
+nnoremap <leader>ac :Augment chat<CR>
+nnoremap <leader>an :Augment chat-new<CR>
+nnoremap <leader>at :Augment chat-toggle<CR>

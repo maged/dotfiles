@@ -1,4 +1,8 @@
-# list of packages installed with brew
+# First install brew
+brew `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
+
+
+# then install these with brew (`brew install <pkg>`)
 # todo: install them automatically for a new environment
 coreutils
 jq
@@ -6,3 +10,5 @@ restic
 tmux
 vim
 wireguard-tools
+gh
+bat
